@@ -22,6 +22,7 @@ export interface Playlist {
   imageUrl: string;
   trackCount: number;
   mood: Mood;
+  youtubeId?: string;
 }
 
 export interface MoodHistory {
