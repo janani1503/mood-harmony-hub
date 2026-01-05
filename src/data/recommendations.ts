@@ -9,6 +9,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300',
       trackCount: 50,
       mood: 'happy',
+      youtubeId: 'ZbZSe6N_BXs', // Pharrell - Happy
     },
     {
       id: 'h2',
@@ -17,6 +18,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=300',
       trackCount: 35,
       mood: 'happy',
+      youtubeId: 'ru0K8uYEZWw', // Can't Stop The Feeling
     },
     {
       id: 'h3',
@@ -25,6 +27,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300',
       trackCount: 42,
       mood: 'happy',
+      youtubeId: 'OPf0YbXqDm0', // Uptown Funk
     },
   ],
   sad: [
@@ -35,6 +38,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1446057032654-9d8885db76c6?w=300',
       trackCount: 40,
       mood: 'sad',
+      youtubeId: 'nfWlot6h_JM', // Tyler the Creator - See You Again
     },
     {
       id: 's2',
@@ -43,6 +47,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=300',
       trackCount: 30,
       mood: 'sad',
+      youtubeId: 'k4V3Mo61fJM', // Let Her Go
     },
     {
       id: 's3',
@@ -51,6 +56,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=300',
       trackCount: 28,
       mood: 'sad',
+      youtubeId: 'pUeY6sTl5eE', // Here Comes The Sun
     },
   ],
   stressed: [
@@ -61,6 +67,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?w=300',
       trackCount: 45,
       mood: 'stressed',
+      youtubeId: 'lFcSrYw-ARY', // Relaxing Music
     },
     {
       id: 'st2',
@@ -69,6 +76,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300',
       trackCount: 25,
       mood: 'stressed',
+      youtubeId: 'eKFTSSKCzWA', // Rain Sounds
     },
     {
       id: 'st3',
@@ -77,6 +85,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=300',
       trackCount: 38,
       mood: 'stressed',
+      youtubeId: 'hlWiI4xVXKY', // Spa Music
     },
   ],
   calm: [
@@ -87,6 +96,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300',
       trackCount: 55,
       mood: 'calm',
+      youtubeId: '1ZYbU82GVz4', // Meditation Music
     },
     {
       id: 'c2',
@@ -95,6 +105,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=300',
       trackCount: 32,
       mood: 'calm',
+      youtubeId: 'lE6RYpe9IT0', // Study Music
     },
     {
       id: 'c3',
@@ -103,6 +114,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=300',
       trackCount: 40,
       mood: 'calm',
+      youtubeId: '4N3N1MlvVc4', // Piano Relaxing Music
     },
   ],
   energetic: [
@@ -113,6 +125,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=300',
       trackCount: 60,
       mood: 'energetic',
+      youtubeId: 'gCYcHz2k5x0', // Eminem - Lose Yourself
     },
     {
       id: 'e2',
@@ -121,6 +134,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300',
       trackCount: 35,
       mood: 'energetic',
+      youtubeId: 'fJ9rUzIMcZQ', // Bohemian Rhapsody
     },
     {
       id: 'e3',
@@ -129,6 +143,7 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
       imageUrl: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=300',
       trackCount: 45,
       mood: 'energetic',
+      youtubeId: 'btPJPFnesV4', // Eye of the Tiger
     },
   ],
 };
