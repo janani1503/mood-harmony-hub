@@ -17,14 +17,18 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/detect" element={<MoodDetection />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/auth" element={<Auth />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+         <Routes>
+  <Route path="/" element={<Landing />} />
+  <Route path="/detect" element={<MoodDetection />} />
+  <Route path="/dashboard" element={<Dashboard />} />
+  <Route path="/auth" element={<Auth />} />
+  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+  <Route path="*" element={<NotFound />} />
+</Routes>
+
+<h1>Mood music feel</h1>   // <-- add this line
+
+        
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
