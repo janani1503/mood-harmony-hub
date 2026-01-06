@@ -20,6 +20,10 @@ const moodGradients: Record<Mood, string> = {
   tired: 'from-slate-400 to-gray-500',
   focused: 'from-blue-500 to-indigo-600',
   romantic: 'from-rose-400 to-pink-500',
+  angry: 'from-red-500 to-red-700',
+  bored: 'from-gray-400 to-slate-500',
+  hopeful: 'from-emerald-400 to-green-500',
+  nostalgic: 'from-purple-400 to-violet-500',
 };
 
 export function MoodCard({ mood, isSelected, onClick, size = 'md' }: MoodCardProps) {

@@ -1,12 +1,14 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mic, MicOff, Volume2, Loader2 } from 'lucide-react';
+import { Mic, MicOff, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useVoiceAssistant } from '@/hooks/useVoiceAssistant';
-import { Mood } from '@/types/mood';
+import { Mood, moodEmojis } from '@/types/mood';
 
 interface VoiceAssistantProps {
   onMoodDetected?: (mood: Mood) => void;
 }
+
+const allMoods: Mood[] = ['happy', 'sad', 'stressed', 'calm', 'energetic', 'anxious', 'excited', 'tired', 'focused', 'romantic', 'angry', 'bored', 'hopeful', 'nostalgic'];
 
 export function VoiceAssistant({ onMoodDetected }: VoiceAssistantProps) {
   const {
@@ -68,15 +70,19 @@ export function VoiceAssistant({ onMoodDetected }: VoiceAssistantProps) {
             {isListening ? 'Listening...' : 'Tap to speak'}
           </p>
           <p className="text-sm text-muted-foreground mt-1">
-            Try saying "I feel stressed" or "Play happy music"
+            Tell me how you're feeling — happy, sad, stressed, excited, and more!
           </p>
         </div>
 
         {isSpeaking && (
-          <div className="flex items-center gap-2 text-primary">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex items-center gap-2 text-primary bg-primary/10 px-4 py-2 rounded-full"
+          >
             <Volume2 className="w-5 h-5 animate-pulse" />
             <span className="text-sm font-medium">Speaking...</span>
-          </div>
+          </motion.div>
         )}
       </div>
 
@@ -104,26 +110,23 @@ export function VoiceAssistant({ onMoodDetected }: VoiceAssistantProps) {
         </motion.div>
       )}
 
-      <div className="glass-card p-4 space-y-3">
-        <h4 className="font-semibold text-sm">Voice Commands</h4>
-        <div className="grid grid-cols-2 gap-2 text-sm">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-            <span className="text-muted-foreground">"I feel happy"</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-            <span className="text-muted-foreground">"Play calm music"</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-            <span className="text-muted-foreground">"I'm stressed"</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-            <span className="text-muted-foreground">"Suggest a workout"</span>
-          </div>
+      <div className="glass-card p-4 space-y-4">
+        <h4 className="font-semibold text-sm">Voice Commands — Say how you feel!</h4>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-sm">
+          {allMoods.map((mood) => (
+            <motion.div 
+              key={mood}
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-2 bg-muted/50 rounded-lg px-3 py-2"
+            >
+              <span className="text-lg">{moodEmojis[mood]}</span>
+              <span className="text-muted-foreground capitalize">{mood}</span>
+            </motion.div>
+          ))}
         </div>
+        <p className="text-xs text-muted-foreground text-center mt-4">
+          Try saying: "I feel happy", "I'm stressed", "Play calm music", "I'm feeling nostalgic"
+        </p>
       </div>
     </div>
   );

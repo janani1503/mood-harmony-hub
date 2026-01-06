@@ -170,6 +170,62 @@ export const moodPlaylists: Record<Mood, Playlist[]> = {
     { id: 'r108', title: 'Tere Liye', description: 'Veer Zaara', imageUrl: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=300', trackCount: 1, mood: 'romantic', youtubeId: 'ZPqtIuGYxqc', language: 'hindi' },
     { id: 'r109', title: 'Kesariya', description: 'Brahmastra - Arijit Singh', imageUrl: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=300', trackCount: 1, mood: 'romantic', youtubeId: 'BddP6PYo2gs', language: 'hindi' },
   ],
+  angry: [
+    // English
+    { id: 'an1', title: 'Rage Against Machine', description: 'Intense rock for anger release', imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300', trackCount: 30, mood: 'angry', youtubeId: '2Pwdq2mNUCA', language: 'english' },
+    { id: 'an2', title: 'Heavy Metal Hits', description: 'Channel your anger', imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300', trackCount: 45, mood: 'angry', youtubeId: 'CSvFpBOe8eY', language: 'english' },
+    { id: 'an3', title: 'Eminem Greatest', description: 'Rap your anger out', imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300', trackCount: 35, mood: 'angry', youtubeId: '_Yhyp-_hX2s', language: 'english' },
+    // Tamil
+    { id: 'an4', title: 'Beast Mode', description: 'Beast - Intense BGM', imageUrl: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=300', trackCount: 1, mood: 'angry', youtubeId: 'qFkU9hPPwg4', language: 'tamil' },
+    { id: 'an5', title: 'Vikram Mass', description: 'Vikram - Intense action music', imageUrl: 'https://images.unsplash.com/photo-1504704911898-68304a7d2807?w=300', trackCount: 1, mood: 'angry', youtubeId: '7FzL5w-lhPI', language: 'tamil' },
+    { id: 'an6', title: 'Leo Naa Ready', description: 'Leo - Vijay Mass', imageUrl: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=300', trackCount: 1, mood: 'angry', youtubeId: 'Zf3nDDJb8Pg', language: 'tamil' },
+    { id: 'an7', title: 'Pathala Pathala', description: 'Vikram - Anirudh', imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300', trackCount: 1, mood: 'angry', youtubeId: 'T6iPYnXcOaM', language: 'tamil' },
+    // Hindi
+    { id: 'an8', title: 'Dangal Title', description: 'Dangal - Aamir Khan', imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300', trackCount: 1, mood: 'angry', youtubeId: 'ChkjMnCraWY', language: 'hindi' },
+    { id: 'an9', title: 'Sadda Haq', description: 'Rockstar - Intense', imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300', trackCount: 1, mood: 'angry', youtubeId: 'DGwCmhT-LsE', language: 'hindi' },
+  ],
+  bored: [
+    // English
+    { id: 'bo1', title: 'Upbeat Pop Mix', description: 'Fun songs to beat boredom', imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300', trackCount: 50, mood: 'bored', youtubeId: 'kJQP7kiw5Fk', language: 'english' },
+    { id: 'bo2', title: 'Dance Pop Hits', description: 'Get moving and shake off boredom', imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300', trackCount: 40, mood: 'bored', youtubeId: 'fRh_vgS2dFE', language: 'english' },
+    { id: 'bo3', title: 'Fun Indie', description: 'Quirky songs for boring moments', imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300', trackCount: 35, mood: 'bored', youtubeId: '60ItHLz5WEA', language: 'english' },
+    // Tamil
+    { id: 'bo4', title: 'Rowdy Baby', description: 'Maari 2 - Fun dance number', imageUrl: 'https://images.unsplash.com/photo-1504704911898-68304a7d2807?w=300', trackCount: 1, mood: 'bored', youtubeId: 'x6Q7c9RyMzk', language: 'tamil' },
+    { id: 'bo5', title: 'Kalyaana Vayasu', description: 'Kolamaavu Kokila', imageUrl: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=300', trackCount: 1, mood: 'bored', youtubeId: 'qEL5y9ejZ6Y', language: 'tamil' },
+    { id: 'bo6', title: 'Don u Don u', description: 'Maari - Fun song', imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300', trackCount: 1, mood: 'bored', youtubeId: 'jAJ4xJKl0H0', language: 'tamil' },
+    { id: 'bo7', title: 'Why This Kolaveri', description: '3 Movie - Viral hit', imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300', trackCount: 1, mood: 'bored', youtubeId: 'YR12Z8f1Dh8', language: 'tamil' },
+    // Hindi
+    { id: 'bo8', title: 'Kar Gayi Chull', description: 'Kapoor & Sons', imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300', trackCount: 1, mood: 'bored', youtubeId: 'NTHz9ephYTw', language: 'hindi' },
+    { id: 'bo9', title: 'Saturday Saturday', description: 'Humpty Sharma Ki Dulhania', imageUrl: 'https://images.unsplash.com/photo-1504704911898-68304a7d2807?w=300', trackCount: 1, mood: 'bored', youtubeId: 'UpJtzPH5LVk', language: 'hindi' },
+  ],
+  hopeful: [
+    // English
+    { id: 'ho1', title: 'Motivational Anthems', description: 'Songs to inspire hope', imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300', trackCount: 40, mood: 'hopeful', youtubeId: 'btPJPFnesV4', language: 'english' },
+    { id: 'ho2', title: 'Uplifting Classics', description: 'Timeless inspiring songs', imageUrl: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=300', trackCount: 35, mood: 'hopeful', youtubeId: 'WA4iX5D9Z64', language: 'english' },
+    { id: 'ho3', title: 'Rise Up Mix', description: 'Songs about overcoming', imageUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300', trackCount: 30, mood: 'hopeful', youtubeId: '3AtDnEC4zak', language: 'english' },
+    // Tamil
+    { id: 'ho4', title: 'Velaikkaran', description: 'Velaikkaran - Motivational', imageUrl: 'https://images.unsplash.com/photo-1504704911898-68304a7d2807?w=300', trackCount: 1, mood: 'hopeful', youtubeId: 'ToPAqk0KDLA', language: 'tamil' },
+    { id: 'ho5', title: 'Mersal Arasan', description: 'Mersal - Inspiring', imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300', trackCount: 1, mood: 'hopeful', youtubeId: 'nqP78ESsKQ4', language: 'tamil' },
+    { id: 'ho6', title: 'Vaathi Coming', description: 'Master - Rise up anthem', imageUrl: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=300', trackCount: 1, mood: 'hopeful', youtubeId: 'lkMpmQ3fZuE', language: 'tamil' },
+    { id: 'ho7', title: 'Verithanam', description: 'Bigil - Victory song', imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300', trackCount: 1, mood: 'hopeful', youtubeId: 'HejhKu3VH4E', language: 'tamil' },
+    // Hindi
+    { id: 'ho8', title: 'Zindagi Kuch Toh Bata', description: 'Bajrangi Bhaijaan', imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300', trackCount: 1, mood: 'hopeful', youtubeId: 'dNt9oCTG89M', language: 'hindi' },
+    { id: 'ho9', title: 'Chak De India', description: 'Title song - SRK', imageUrl: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=300', trackCount: 1, mood: 'hopeful', youtubeId: 'De0MBVa8r6s', language: 'hindi' },
+  ],
+  nostalgic: [
+    // English
+    { id: 'no1', title: '90s Hits', description: 'Throwback to the golden era', imageUrl: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=300', trackCount: 60, mood: 'nostalgic', youtubeId: 'djV11Xbc914', language: 'english' },
+    { id: 'no2', title: '2000s Pop', description: 'Remember the good old days', imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300', trackCount: 55, mood: 'nostalgic', youtubeId: 'LOZuxwVk7TU', language: 'english' },
+    { id: 'no3', title: 'Acoustic Memories', description: 'Gentle acoustic throwbacks', imageUrl: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=300', trackCount: 40, mood: 'nostalgic', youtubeId: '0yW7w8F2TVA', language: 'english' },
+    // Tamil
+    { id: 'no4', title: 'Ilaiyaraaja Classics', description: 'Timeless Tamil melodies', imageUrl: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=300', trackCount: 50, mood: 'nostalgic', youtubeId: 'bMvYLijDPKo', language: 'tamil' },
+    { id: 'no5', title: 'SPB Golden Hits', description: 'SP Balasubrahmanyam classics', imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300', trackCount: 45, mood: 'nostalgic', youtubeId: 'i7gVIHG8PvE', language: 'tamil' },
+    { id: 'no6', title: 'Old Tamil Melodies', description: '90s Tamil hits', imageUrl: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=300', trackCount: 40, mood: 'nostalgic', youtubeId: 'xIfwNs7XhMk', language: 'tamil' },
+    { id: 'no7', title: 'AR Rahman 90s', description: 'Early AR Rahman magic', imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300', trackCount: 35, mood: 'nostalgic', youtubeId: '7A3P8GxmCVA', language: 'tamil' },
+    // Hindi
+    { id: 'no8', title: 'Old Hindi Gold', description: 'Classic Bollywood songs', imageUrl: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=300', trackCount: 50, mood: 'nostalgic', youtubeId: 'g0eO74UmRBs', language: 'hindi' },
+    { id: 'no9', title: '90s Bollywood', description: 'SRK era classics', imageUrl: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=300', trackCount: 45, mood: 'nostalgic', youtubeId: '7WF35-OwLTw', language: 'hindi' },
+  ],
 };
 
 export const moodActivities: Record<Mood, Activity[]> = {
@@ -260,6 +316,38 @@ export const moodActivities: Record<Mood, Activity[]> = {
     { id: 'ro5', title: 'Cook Together', description: 'Make a romantic dinner', duration: '60 min', category: 'creative', icon: '👨‍🍳' },
     { id: 'ro6', title: 'Sunset Watch', description: 'Watch the sunset together', duration: '30 min', category: 'relaxation', icon: '🌅' },
     { id: 'ro7', title: 'Dance Together', description: 'Slow dance at home', duration: '15 min', category: 'social', icon: '💃' },
+  ],
+  angry: [
+    { id: 'ag1', title: 'Punching Workout', description: 'Release anger through boxing moves', duration: '20 min', category: 'workout', icon: '🥊', youtubeId: '6lDkq_bAYdw' },
+    { id: 'ag2', title: 'Scream Therapy', description: 'Controlled vocal release', duration: '5 min', category: 'relaxation', icon: '😤' },
+    { id: 'ag3', title: 'Intense Cardio', description: 'Burn off that anger', duration: '30 min', category: 'workout', icon: '🏃', youtubeId: 'ml6cT4AZdqI' },
+    { id: 'ag4', title: 'Journal Your Feelings', description: 'Write out your frustrations', duration: '15 min', category: 'creative', icon: '📝' },
+    { id: 'ag5', title: 'Anger Meditation', description: 'Transform anger into calm', duration: '10 min', category: 'meditation', icon: '🧘', youtubeId: 'Q9lmLlMB4fQ' },
+    { id: 'ag6', title: 'Cold Shower', description: 'Shock your system to calm down', duration: '5 min', category: 'relaxation', icon: '🚿' },
+  ],
+  bored: [
+    { id: 'br1', title: 'Learn Something New', description: 'Watch an interesting documentary', duration: '45 min', category: 'focus', icon: '📺', youtubeId: 'PUv66718DII' },
+    { id: 'br2', title: 'Creative Drawing', description: 'Sketch something random', duration: '30 min', category: 'creative', icon: '✏️' },
+    { id: 'br3', title: 'Dance Workout', description: 'Fun dance to shake off boredom', duration: '20 min', category: 'workout', icon: '💃', youtubeId: 'FJpSZlSz8Gs' },
+    { id: 'br4', title: 'Try a New Recipe', description: 'Cook something you never tried', duration: '60 min', category: 'creative', icon: '👨‍🍳' },
+    { id: 'br5', title: 'Video Call Friends', description: 'Connect with someone', duration: '30 min', category: 'social', icon: '📱' },
+    { id: 'br6', title: 'Explore Music', description: 'Discover new artists', duration: '30 min', category: 'creative', icon: '🎵' },
+  ],
+  hopeful: [
+    { id: 'hp1', title: 'Vision Board', description: 'Create your dreams visually', duration: '45 min', category: 'creative', icon: '🎯' },
+    { id: 'hp2', title: 'Gratitude Journaling', description: 'Write what you are grateful for', duration: '15 min', category: 'creative', icon: '📓' },
+    { id: 'hp3', title: 'Goal Setting', description: 'Plan your next achievements', duration: '30 min', category: 'focus', icon: '🌟' },
+    { id: 'hp4', title: 'Motivational Videos', description: 'Watch inspiring talks', duration: '20 min', category: 'focus', icon: '🎬', youtubeId: 'mgmVOuLgFB0' },
+    { id: 'hp5', title: 'Plant Something', description: 'Nurture growth symbolically', duration: '20 min', category: 'relaxation', icon: '🌱' },
+    { id: 'hp6', title: 'Help Someone', description: 'Random act of kindness', duration: '30 min', category: 'social', icon: '💝' },
+  ],
+  nostalgic: [
+    { id: 'ns1', title: 'Photo Album', description: 'Browse old photos', duration: '30 min', category: 'relaxation', icon: '📸' },
+    { id: 'ns2', title: 'Call Old Friends', description: 'Reconnect with the past', duration: '30 min', category: 'social', icon: '📞' },
+    { id: 'ns3', title: 'Write Memories', description: 'Journal about good times', duration: '20 min', category: 'creative', icon: '✍️' },
+    { id: 'ns4', title: 'Cook Childhood Dish', description: 'Make a dish from your past', duration: '45 min', category: 'creative', icon: '🍲' },
+    { id: 'ns5', title: 'Watch Old Movies', description: 'Films from your childhood', duration: '120 min', category: 'relaxation', icon: '🎬' },
+    { id: 'ns6', title: 'Visit Memory Lane', description: 'Walk through familiar places', duration: '60 min', category: 'relaxation', icon: '🚶' },
   ],
 };
 
