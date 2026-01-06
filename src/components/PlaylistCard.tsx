@@ -60,9 +60,11 @@ export function PlaylistCard({ playlist, index = 0 }: PlaylistCardProps) {
         </div>
       </motion.div>
 
-      {/* YouTube Player Modal */}
       <Dialog open={isPlaying} onOpenChange={setIsPlaying}>
-        <DialogContent className="sm:max-w-[800px] p-0 overflow-hidden bg-background/95 backdrop-blur-xl border-border/50">
+        <DialogContent 
+          className="sm:max-w-[800px] p-0 overflow-hidden bg-background/95 backdrop-blur-xl border-border/50"
+          aria-describedby="playlist-dialog-description"
+        >
           <DialogHeader className="p-4 pb-0">
             <DialogTitle className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg overflow-hidden">
@@ -73,6 +75,9 @@ export function PlaylistCard({ playlist, index = 0 }: PlaylistCardProps) {
                 <span className="text-sm font-normal text-muted-foreground">{playlist.description}</span>
               </div>
             </DialogTitle>
+            <p id="playlist-dialog-description" className="sr-only">
+              Playing {playlist.title} - {playlist.description}
+            </p>
           </DialogHeader>
           <div className="p-4">
             <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black">
