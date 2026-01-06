@@ -15,19 +15,24 @@ const moodGradients: Record<Mood, string> = {
   stressed: 'from-red-400 to-rose-500',
   calm: 'from-teal-400 to-cyan-500',
   energetic: 'from-orange-400 to-red-500',
+  anxious: 'from-yellow-400 to-amber-500',
+  excited: 'from-pink-400 to-purple-500',
+  tired: 'from-slate-400 to-gray-500',
+  focused: 'from-blue-500 to-indigo-600',
+  romantic: 'from-rose-400 to-pink-500',
 };
 
 export function MoodCard({ mood, isSelected, onClick, size = 'md' }: MoodCardProps) {
   const sizeClasses = {
-    sm: 'w-20 h-20',
-    md: 'w-28 h-28',
-    lg: 'w-36 h-36',
+    sm: 'w-16 h-16 sm:w-20 sm:h-20',
+    md: 'w-24 h-24 sm:w-28 sm:h-28',
+    lg: 'w-28 h-28 sm:w-36 sm:h-36',
   };
 
   const textSizes = {
-    sm: 'text-2xl',
-    md: 'text-4xl',
-    lg: 'text-5xl',
+    sm: 'text-xl sm:text-2xl',
+    md: 'text-3xl sm:text-4xl',
+    lg: 'text-4xl sm:text-5xl',
   };
 
   return (
@@ -36,7 +41,7 @@ export function MoodCard({ mood, isSelected, onClick, size = 'md' }: MoodCardPro
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
       className={cn(
-        'relative rounded-2xl flex flex-col items-center justify-center gap-2 transition-all duration-300',
+        'relative rounded-2xl flex flex-col items-center justify-center gap-1 sm:gap-2 transition-all duration-300',
         sizeClasses[size],
         isSelected
           ? `bg-gradient-to-br ${moodGradients[mood]} shadow-lg`
@@ -53,7 +58,7 @@ export function MoodCard({ mood, isSelected, onClick, size = 'md' }: MoodCardPro
       )}
       <span className={cn(textSizes[size])}>{moodEmojis[mood]}</span>
       <span className={cn(
-        'text-xs font-medium capitalize',
+        'text-[10px] sm:text-xs font-medium capitalize',
         isSelected ? 'text-white' : 'text-muted-foreground'
       )}>
         {mood}
@@ -68,6 +73,8 @@ interface MoodDisplayProps {
   showDescription?: boolean;
 }
 
+const moodDisplayGradients: Record<Mood, string> = moodGradients;
+
 export function MoodDisplay({ mood, confidence, showDescription = true }: MoodDisplayProps) {
   return (
     <motion.div
@@ -79,7 +86,7 @@ export function MoodDisplay({ mood, confidence, showDescription = true }: MoodDi
         <motion.div
           className={cn(
             'w-32 h-32 rounded-full flex items-center justify-center text-6xl',
-            `bg-gradient-to-br ${moodGradients[mood]}`
+            `bg-gradient-to-br ${moodDisplayGradients[mood]}`
           )}
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 2, repeat: Infinity }}

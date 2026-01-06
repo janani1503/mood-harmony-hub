@@ -10,7 +10,7 @@ import { VoiceAssistant } from '@/components/VoiceAssistant';
 import { MoodCard, MoodDisplay } from '@/components/MoodCard';
 import { Mood, moodEmojis } from '@/types/mood';
 
-const moods: Mood[] = ['happy', 'sad', 'stressed', 'calm', 'energetic'];
+const moods: Mood[] = ['happy', 'sad', 'stressed', 'calm', 'energetic', 'anxious', 'excited', 'tired', 'focused', 'romantic'];
 
 export default function MoodDetection() {
   const [selectedMood, setSelectedMood] = useState<Mood | null>(null);
@@ -104,14 +104,14 @@ export default function MoodDetection() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-4 mb-8">
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
                   {moods.map((mood) => (
                     <MoodCard
                       key={mood}
                       mood={mood}
                       isSelected={selectedMood === mood}
                       onClick={() => setSelectedMood(mood)}
-                      size="lg"
+                      size="md"
                     />
                   ))}
                 </div>
