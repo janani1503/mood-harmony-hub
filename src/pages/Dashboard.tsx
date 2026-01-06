@@ -10,16 +10,31 @@ import { ActivityCard } from '@/components/ActivityCard';
 import { Mood, Language, languageLabels } from '@/types/mood';
 import { moodActivities, getPlaylistsByLanguage } from '@/data/recommendations';
 
-const moods: Mood[] = ['happy', 'sad', 'stressed', 'calm', 'energetic', 'anxious', 'excited', 'tired', 'focused', 'romantic'];
+const moods: Mood[] = ['happy', 'sad', 'stressed', 'calm', 'energetic', 'anxious', 'excited', 'tired', 'focused', 'romantic', 'angry', 'bored', 'hopeful', 'nostalgic'];
 const languages: Language[] = ['all', 'english', 'tamil', 'hindi'];
 
 export default function Dashboard() {
   const [searchParams] = useSearchParams();
   const moodParam = searchParams.get('mood') as Mood | null;
   const [currentMood, setCurrentMood] = useState<Mood>(moodParam || 'calm');
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>('all');
-  const [likedPlaylists, setLikedPlaylists] = useState<Set<string>>(new Set());
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>(() => {
+    const saved = localStorage.getItem('preferredLanguage');
+    return (saved as Language) || 'all';
+  });
+  const [likedPlaylists, setLikedPlaylists] = useState<Set<string>>(() => {
+    const saved = localStorage.getItem('likedPlaylists');
+    return saved ? new Set(JSON.parse(saved)) : new Set();
+  });
   const [isLoading, setIsLoading] = useState(false);
+
+  // Save preferences to localStorage
+  useEffect(() => {
+    localStorage.setItem('preferredLanguage', selectedLanguage);
+  }, [selectedLanguage]);
+
+  useEffect(() => {
+    localStorage.setItem('likedPlaylists', JSON.stringify([...likedPlaylists]));
+  }, [likedPlaylists]);
 
   const playlists = getPlaylistsByLanguage(currentMood, selectedLanguage);
   const activities = moodActivities[currentMood];

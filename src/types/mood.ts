@@ -1,4 +1,4 @@
-export type Mood = 'happy' | 'sad' | 'stressed' | 'calm' | 'energetic' | 'anxious' | 'excited' | 'tired' | 'focused' | 'romantic';
+export type Mood = 'happy' | 'sad' | 'stressed' | 'calm' | 'energetic' | 'anxious' | 'excited' | 'tired' | 'focused' | 'romantic' | 'angry' | 'bored' | 'hopeful' | 'nostalgic';
 
 export type Language = 'english' | 'tamil' | 'hindi' | 'all';
 
@@ -34,6 +34,12 @@ export interface MoodHistory {
   timestamp: Date;
 }
 
+export interface UserPreferences {
+  likedPlaylists: string[];
+  preferredLanguage: Language;
+  moodHistory: MoodHistory[];
+}
+
 export const moodColors: Record<Mood, string> = {
   happy: 'mood-happy',
   sad: 'mood-sad',
@@ -45,6 +51,10 @@ export const moodColors: Record<Mood, string> = {
   tired: 'mood-tired',
   focused: 'mood-focused',
   romantic: 'mood-romantic',
+  angry: 'mood-angry',
+  bored: 'mood-bored',
+  hopeful: 'mood-hopeful',
+  nostalgic: 'mood-nostalgic',
 };
 
 export const moodEmojis: Record<Mood, string> = {
@@ -58,6 +68,10 @@ export const moodEmojis: Record<Mood, string> = {
   tired: '😴',
   focused: '🎯',
   romantic: '💕',
+  angry: '😠',
+  bored: '😐',
+  hopeful: '🌟',
+  nostalgic: '🥺',
 };
 
 export const moodDescriptions: Record<Mood, string> = {
@@ -71,6 +85,10 @@ export const moodDescriptions: Record<Mood, string> = {
   tired: 'Need some rest? Let\'s wind down.',
   focused: 'You\'re in the zone! Let\'s keep it going.',
   romantic: 'Feeling the love? Let\'s set the mood.',
+  angry: 'Feeling frustrated? Let\'s help you release that energy.',
+  bored: 'Need some excitement? Let\'s find something fun!',
+  hopeful: 'You\'re feeling optimistic! Let\'s embrace it.',
+  nostalgic: 'Taking a trip down memory lane? Let\'s enjoy it.',
 };
 
 export const languageLabels: Record<Language, string> = {

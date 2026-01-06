@@ -25,8 +25,6 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-
-        <h1>Mood music feel</h1>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
