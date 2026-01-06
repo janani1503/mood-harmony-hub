@@ -352,8 +352,13 @@ export const moodActivities: Record<Mood, Activity[]> = {
 };
 
 // Filter playlists by language
+// - language === 'all' => mood-based recommendations
+// - specific language (tamil/hindi/english) => show ALL songs in that language
 export const getPlaylistsByLanguage = (mood: Mood, language: Language): Playlist[] => {
-  const playlists = moodPlaylists[mood] || [];
-  if (language === 'all') return playlists;
-  return playlists.filter(p => p.language === language);
+  if (language === 'all') {
+    return moodPlaylists[mood] || [];
+  }
+
+  const allPlaylists = Object.values(moodPlaylists).flat();
+  return allPlaylists.filter((p) => p.language === language);
 };

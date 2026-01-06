@@ -19,11 +19,15 @@ export default function Dashboard() {
   const [currentMood, setCurrentMood] = useState<Mood>(moodParam || 'calm');
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(() => {
     const saved = localStorage.getItem('preferredLanguage');
-    return (saved as Language) || 'all';
+    return languages.includes(saved as Language) ? (saved as Language) : 'all';
   });
   const [likedPlaylists, setLikedPlaylists] = useState<Set<string>>(() => {
     const saved = localStorage.getItem('likedPlaylists');
-    return saved ? new Set(JSON.parse(saved)) : new Set();
+    try {
+      return saved ? new Set(JSON.parse(saved)) : new Set();
+    } catch {
+      return new Set();
+    }
   });
   const [isLoading, setIsLoading] = useState(false);
 
