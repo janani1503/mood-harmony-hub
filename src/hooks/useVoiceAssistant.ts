@@ -36,19 +36,41 @@ export function useVoiceAssistant(onMoodDetected?: (mood: Mood) => void) {
   
   const recognitionRef = useRef<any>(null);
   const synthRef = useRef<SpeechSynthesis | null>(null);
+  const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      synthRef.current = window.speechSynthesis;
-      
-      const SpeechRecognitionAPI = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-      if (SpeechRecognitionAPI) {
-        recognitionRef.current = new SpeechRecognitionAPI();
-        recognitionRef.current.continuous = false;
-        recognitionRef.current.interimResults = true;
-        recognitionRef.current.lang = 'en-US';
-      }
+    if (typeof window === 'undefined') return;
+
+    const synth = window.speechSynthesis;
+    synthRef.current = synth;
+
+    const updateVoices = () => {
+      voicesRef.current = synth.getVoices();
+    };
+
+    // Trigger initial voice load (some browsers return [] until voiceschanged)
+    updateVoices();
+
+    // Keep voice list updated
+    if (typeof synth.addEventListener === 'function') {
+      synth.addEventListener('voiceschanged', updateVoices);
+    } else {
+      (synth as any).onvoiceschanged = updateVoices;
     }
+
+    const SpeechRecognitionAPI = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (SpeechRecognitionAPI) {
+      recognitionRef.current = new SpeechRecognitionAPI();
+      recognitionRef.current.continuous = false;
+      recognitionRef.current.interimResults = true;
+      recognitionRef.current.lang = 'en-US';
+    }
+
+    return () => {
+      if (typeof synth.removeEventListener === 'function') {
+        synth.removeEventListener('voiceschanged', updateVoices);
+      }
+    };
   }, []);
 
   // Comprehensive mood keywords for all 14 emotions
@@ -216,16 +238,21 @@ export function useVoiceAssistant(onMoodDetected?: (mood: Mood) => void) {
     synthRef.current.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
     utterance.rate = 0.9;
     utterance.pitch = 1;
     utterance.volume = 1;
-    
-    // Try to get a more natural voice
-    const voices = synthRef.current.getVoices();
-    const preferredVoice = voices.find(v => v.name.includes('Google') || v.name.includes('Natural')) || voices[0];
-    if (preferredVoice) {
-      utterance.voice = preferredVoice;
-    }
+
+    // Prefer an English voice when available
+    const voices = voicesRef.current.length ? voicesRef.current : synthRef.current.getVoices();
+    const englishVoices = voices.filter(v => (v.lang || '').toLowerCase().startsWith('en'));
+    const preferredVoice =
+      englishVoices.find(v => v.name.toLowerCase().includes('google')) ||
+      englishVoices.find(v => v.name.toLowerCase().includes('natural')) ||
+      englishVoices[0] ||
+      voices[0];
+
+    if (preferredVoice) utterance.voice = preferredVoice;
     
     utterance.onstart = () => {
       setState(prev => ({ ...prev, isSpeaking: true }));
