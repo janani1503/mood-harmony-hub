@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Lock, User, ArrowRight, Loader2 } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Navbar } from '@/components/Navbar';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/hooks/useAuth';
+import { z } from 'zod';
 
 type AuthMode = 'login' | 'signup';
+
+const emailSchema = z.string().email('Please enter a valid email address');
+const passwordSchema = z.string().min(6, 'Password must be at least 6 characters');
 
 export default function Auth() {
   const [mode, setMode] = useState<AuthMode>('login');
@@ -18,31 +23,131 @@ export default function Auth() {
     email: '',
     password: '',
   });
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { user, signUp, signIn, signInWithGoogle } = useAuth();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
+
+  const validateForm = () => {
+    const newErrors: { email?: string; password?: string } = {};
+    
+    try {
+      emailSchema.parse(formData.email);
+    } catch (e) {
+      if (e instanceof z.ZodError) {
+        newErrors.email = e.errors[0].message;
+      }
+    }
+    
+    try {
+      passwordSchema.parse(formData.password);
+    } catch (e) {
+      if (e instanceof z.ZodError) {
+        newErrors.password = e.errors[0].message;
+      }
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) return;
+    
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      if (mode === 'signup') {
+        const { error } = await signUp(formData.email, formData.password, formData.name);
+        
+        if (error) {
+          if (error.message.includes('already registered')) {
+            toast({
+              title: 'Account exists',
+              description: 'An account with this email already exists. Please sign in.',
+              variant: 'destructive',
+            });
+          } else {
+            toast({
+              title: 'Sign up failed',
+              description: error.message,
+              variant: 'destructive',
+            });
+          }
+          return;
+        }
+        
+        toast({
+          title: 'Account created!',
+          description: 'Welcome to MoodFlow! Redirecting to dashboard...',
+        });
+        navigate('/dashboard');
+      } else {
+        const { error } = await signIn(formData.email, formData.password);
+        
+        if (error) {
+          toast({
+            title: 'Login failed',
+            description: error.message === 'Invalid login credentials' 
+              ? 'Invalid email or password. Please try again.'
+              : error.message,
+            variant: 'destructive',
+          });
+          return;
+        }
+        
+        toast({
+          title: 'Welcome back!',
+          description: 'You have successfully logged in.',
+        });
+        navigate('/dashboard');
+      }
+    } catch (error) {
       toast({
-        title: mode === 'login' ? 'Welcome back!' : 'Account created!',
-        description: mode === 'login' 
-          ? 'You have successfully logged in.'
-          : 'Your account has been created successfully.',
+        title: 'Error',
+        description: 'Something went wrong. Please try again.',
+        variant: 'destructive',
       });
-      navigate('/dashboard');
-    }, 1500);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const { error } = await signInWithGoogle();
+      if (error) {
+        toast({
+          title: 'Google sign in failed',
+          description: error.message,
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to sign in with Google.',
+        variant: 'destructive',
+      });
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (errors[name as keyof typeof errors]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
   };
 
   return (
@@ -95,7 +200,6 @@ export default function Auth() {
                       value={formData.name}
                       onChange={handleInputChange}
                       className="pl-10 h-12 rounded-xl bg-muted/50 border-border"
-                      required
                     />
                   </div>
                 </motion.div>
@@ -112,10 +216,13 @@ export default function Auth() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="pl-10 h-12 rounded-xl bg-muted/50 border-border"
+                    className={`pl-10 h-12 rounded-xl bg-muted/50 border-border ${errors.email ? 'border-destructive' : ''}`}
                     required
                   />
                 </div>
+                {errors.email && (
+                  <p className="text-sm text-destructive">{errors.email}</p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -129,10 +236,13 @@ export default function Auth() {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="pl-10 h-12 rounded-xl bg-muted/50 border-border"
+                    className={`pl-10 h-12 rounded-xl bg-muted/50 border-border ${errors.password ? 'border-destructive' : ''}`}
                     required
                   />
                 </div>
+                {errors.password && (
+                  <p className="text-sm text-destructive">{errors.password}</p>
+                )}
               </div>
 
               <Button
@@ -167,7 +277,7 @@ export default function Auth() {
             <Button
               variant="outline"
               className="w-full h-12 rounded-xl gap-3"
-              onClick={() => toast({ title: 'Coming soon', description: 'Google OAuth will be available soon.' })}
+              onClick={handleGoogleSignIn}
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
