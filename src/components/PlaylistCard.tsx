@@ -19,25 +19,36 @@ export function PlaylistCard({ playlist, index = 0 }: PlaylistCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const youtubeWatchUrl = useMemo(() => {
-    if (!playlist.youtubeId) {
-      const q = encodeURIComponent(`${playlist.title} song`);
+    // Many Tamil tracks are blocked/removed for embeds and fixed IDs go "unavailable".
+    // For Tamil, always fall back to YouTube search so users can still play something.
+    const forceSearch = playlist.language === 'tamil';
+
+    if (!playlist.youtubeId || forceSearch) {
+      const q = encodeURIComponent(
+        `${playlist.title} ${playlist.language === 'tamil' ? 'tamil ' : ''}song`
+      );
       return `https://www.youtube.com/results?search_query=${q}`;
     }
+
     return `https://www.youtube.com/watch?v=${playlist.youtubeId}`;
-  }, [playlist.title, playlist.youtubeId]);
+  }, [playlist.language, playlist.title, playlist.youtubeId]);
 
   const youtubeEmbedUrl = useMemo(() => {
-    if (!playlist.youtubeId) return '';
+    const disableEmbed = !playlist.youtubeId || playlist.language === 'tamil';
+    if (disableEmbed) return '';
+
     const origin = typeof window !== 'undefined' ? encodeURIComponent(window.location.origin) : '';
     return `https://www.youtube-nocookie.com/embed/${playlist.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1${origin ? `&origin=${origin}` : ''}`;
-  }, [playlist.youtubeId]);
+  }, [playlist.language, playlist.youtubeId]);
 
   const handlePlay = () => {
-    if (playlist.youtubeId) {
+    const canEmbed = Boolean(playlist.youtubeId) && playlist.language !== 'tamil';
+    if (canEmbed) {
       setIsPlaying(true);
       return;
     }
-    // Fallback: open YouTube search if we don't have an id
+
+    // Fallback: open YouTube search (or watch URL) in a new tab.
     window.open(youtubeWatchUrl, '_blank', 'noopener,noreferrer');
   };
 
